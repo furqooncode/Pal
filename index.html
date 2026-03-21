@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PayPal Login UI</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3a7bd5, #5fa8ff);
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border-radius: 25px;
+    padding: 30px 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .logo {
+    width: 70px;
+    margin: 0 auto 20px;
+  }
+
+  .logo img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 22px;
+    color: #1f2d5a;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: #8a94a6;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 10px 12px 40px;
+    border: none;
+    border-bottom: 2px solid #e0e4ec;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .input-group input:focus {
+    border-color: #3a7bd5;
+  }
+
+  .input-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a94a6;
+    font-size: 16px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+
+  .login-btn {
+    background: linear-gradient(135deg, #2b5cff, #3a7bd5);
+    color: #fff;
+  }
+
+  .login-btn:hover {
+    opacity: 0.9;
+  }
+
+  .signup-btn {
+    background: #e0e4ec;
+    color: #6c7585;
+  }
+
+  .signup-btn:hover {
+    background: #d5dae3;
+  }
+
+  /* Responsive tweaks */
+  @media (min-width: 768px) {
+    .container {
+      max-width: 420px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="logo">
+    <!-- You can replace this with actual PayPal logo -->
+    <img src="https://www.svgrepo.com/show/303191/paypal-logo.svg" alt="logo">
+  </div>
+
+  <h1>Welcome to Paypal</h1>
+  <p class="subtitle">
+    PayPal allows to use only your address email to make and receive payments.
+  </p>
+
+  <div class="input-group">
+    <i>👤</i>
+    <input type="email" id="email" placeholder="Enter email" />
+  </div>
+
+  <div class="input-group">
+    <i>🔒</i>
+    <input type="password" id="password" placeholder="Enter password" />
+  </div>
+
+  <button class="btn login-btn" onclick="login()" id="log">Login now</button>
+  <button class="btn signup-btn" onclick="signup()">Sign Up</button>
+</div>
+
+<script>
+
+    
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const log = document.getElementById("log")
+    
+    log.textContent = "logging in user...";
+    
+    let cred = {
+     mail: "erinolahamzat001@gmail.com",
+     pass: "demotry01"
+   }
+   
+    if (!email || !password) {
+    alert("Please fill in all fields");
+    log.textContent = "login"
+      return;
+    }
+
+setTimeout(()=>{
+   if(email !== cred.mail || password !== cred.pass){
+ alert("Invalid email or password ")
+ log.textContent = "login";
+     return;
+   }else{
+     window.location.href = 'home.html';
+   }
+},2000)
+  
+  }
+
+  function signup() {
+    alert("Redirecting to sign up...");
+    
+  }
+window.addEventListener("load", function(){
+    localStorage.removeItem('amount')
+})
+</script>
+
+</body>
+</html>

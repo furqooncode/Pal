@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fintech Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", sans-serif;
+}
+
+body{
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.phone{
+width:100%;
+max-width:380px;
+background:white;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* HEADER */
+
+.header{
+background:linear-gradient(135deg,#3f2b96,#7c3aed);
+color:white;
+padding:25px;
+padding-bottom:60px;
+}
+
+.header-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.profile img{
+width:40px;
+height:40px;
+border-radius:50%;
+}
+
+.welcome{
+font-size:13px;
+opacity:.8;
+}
+
+.name{
+font-weight:600;
+}
+
+/* BALANCE CARD */
+
+.balance-card{
+background:white;
+margin:-40px 20px 0 20px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.balance-card small{
+color:#777;
+}
+
+.balance{
+font-size:28px;
+font-weight:700;
+margin:8px 0 15px 0;
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+}
+
+.action{
+display:flex;
+flex-direction:column;
+align-items:center;
+font-size:12px;
+cursor:pointer;
+}
+
+.circle{
+width:45px;
+height:45px;
+border-radius:50%;
+background:linear-gradient(135deg,#7c3aed,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+margin-bottom:6px;
+transition:.3s;
+border:none;
+outline: none;
+}
+
+.circle:hover{
+transform:scale(1.1);
+}
+
+/* INSIGHT CARD */
+
+.insight{
+margin:20px;
+padding:15px;
+border-radius:15px;
+background:linear-gradient(90deg,#f3e8ff,#ede9fe);
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+}
+
+/* TRANSACTIONS */
+
+.transactions{
+padding:0 20px 80px 20px;
+}
+
+.transactions h3{
+margin-bottom:15px;
+}
+
+.tx{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.tx-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.tx-icon{
+width:40px;
+height:40px;
+border-radius:10px;
+background:#f1f1f1;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+}
+
+.tx-title{
+font-weight:600;
+font-size:14px;
+}
+
+.tx-sub{
+font-size:12px;
+color:#777;
+}
+
+.amount{
+font-weight:600;
+}
+
+.green{
+color:#10b981;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:absolute;
+bottom:0;
+width:100%;
+max-width:380px;
+background:white;
+border-top:1px solid #eee;
+display:flex;
+justify-content:space-around;
+padding:10px 0;
+}
+
+.nav-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+font-size:12px;
+color:#777;
+cursor:pointer;
+}
+
+.nav-item i{
+font-size:18px;
+margin-bottom:4px;
+}
+
+.active{
+color:#7c3aed;
+}
+
+.scan{
+background:#7c3aed;
+color:white;
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:-25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:420px){
+
+.phone{
+border-radius:0;
+min-height:100vh;
+}
+
+.navbar{
+max-width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+<div class="header">
+
+<div class="header-top">
+
+<div class="profile">
+<img src="https://i.pravatar.cc/100">
+<div>
+<div class="name">Hello Hilya!</div>
+<div class="welcome">Welcome back</div>
+</div>
+</div>
+
+<i class="fa-regular fa-bell"></i>
+
+</div>
+
+</div>
+
+
+<div class="balance-card">
+
+<small>YOUR BALANCE</small>
+
+<div class="balance">€41,379.00</div>
+
+<div class="actions">
+
+<div class="action">
+<button class="circle" onclick="Transfer()"><i class="fa-solid fa-arrow-up"></i></button>
+Transfer
+</div>
+
+<div class="action">
+<button class="circle"><i class="fa-solid fa-arrow-down"></i></button>
+Withdraw
+</div>
+
+<div class="action">
+<button class="circle"><i class="fa-solid fa-coins"></i></button>
+Invest
+</div>
+
+<div class="action">
+<button class="circle"><i class="fa-solid fa-cart-plus"></i></button>
+Top up
+</div>
+
+</div>
+
+</div>
+
+
+<div class="insight">
+<div>Let's check your <b>Financial Insight</b> for June!</div>
+<i class="fa-solid fa-chevron-right"></i>
+</div>
+
+
+<div class="transactions">
+
+<h3>Recent Transactions</h3>
+
+<div class="tx">
+
+<div class="tx-left">
+<div class="tx-icon"><i class="fa-brands fa-youtube"></i></div>
+<div>
+<div class="tx-title">Youtube</div>
+<div class="tx-sub">Subscription Payment</div>
+</div>
+</div>
+
+<div>
+<div class="amount">$15.00</div>
+<div class="tx-sub">16 May 2024</div>
+</div>
+
+</div>
+
+
+<div class="tx">
+
+<div class="tx-left">
+<div class="tx-icon"><i class="fa-brands fa-stripe"></i></div>
+<div>
+<div class="tx-title">Stripe</div>
+<div class="tx-sub">Monthly Salary</div>
+</div>
+</div>
+
+<div>
+<div class="amount green">+$3,000</div>
+<div class="tx-sub">15 May 2024</div>
+</div>
+
+</div>
+
+
+<div class="tx">
+
+<div class="tx-left">
+<div class="tx-icon"><i class="fa-brands fa-google-play"></i></div>
+<div>
+<div class="tx-title">Google Play</div>
+<div class="tx-sub">E-book Purchase</div>
+</div>
+</div>
+
+<div>
+<div class="amount">$139.00</div>
+<div class="tx-sub">14 May 2024</div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="navbar">
+
+<div class="nav-item active">
+<i class="fa-solid fa-house"></i>
+Home
+</div>
+
+<div class="nav-item">
+<i class="fa-regular fa-credit-card"></i>
+Card
+</div>
+
+<div class="scan">
+<i class="fa-solid fa-qrcode"></i>
+</div>
+
+<div class="nav-item">
+<i class="fa-solid fa-chart-column"></i>
+Stat
+</div>
+
+<div class="nav-item">
+<i class="fa-regular fa-user"></i>
+Profile
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+// simple button interaction
+function Transfer(){
+  localStorage.removeItem('amount')
+  window.location.href = "Transfer.html"
+}
+
+</script>
+
+</body>
+</html>
