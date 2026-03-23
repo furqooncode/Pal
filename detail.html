@@ -223,7 +223,7 @@
         
       </div>
       
-      <button type="submit">Withdraw</button>
+    <button type="submit" id="btn">Transfer</button>
       
     </form>
     
@@ -240,13 +240,19 @@
     function closeModal() {
       window.location.href = "Transfer.html"
     }
+  const btn = document.getElementById("btn")
     
     document.getElementById("withdrawForm").addEventListener("submit", function(e) {
-      
       e.preventDefault();
     
-    alert("An error occured!!")
+  btn.textContent = "submitting.."
+  
+    setTimeout(()=>{
+      alert("An error occured!!")
+      btn.textContent = "Transfer"
       
+    },2500)
+  
     });
   </script>
   
