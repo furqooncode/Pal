@@ -140,8 +140,12 @@
       background: #1d4ed8;
     }
     
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+    
     @media(max-width:600px) {
-      
       .form-grid {
         grid-template-columns: 1fr;
       }
@@ -153,7 +157,6 @@
       .amount h1 {
         font-size: 30px;
       }
-      
     }
   </style>
 </head>
@@ -185,36 +188,39 @@
         
         <div class="form-group">
           <label>Bank Account Holder Name</label>
-          <input type="text" placeholder="Triumph" required>
+          <input type="text" id="name" placeholder="Triumph">
         </div>
         
         <div class="form-group">
           <label>NUBAN / Account Number</label>
-          <input type="number" placeholder="1234567890" required>
+          <input type="number" id="account" placeholder="1234567890">
         </div>
         
         <div class="form-group">
           <label>Bank Name</label>
-          <select>
-            <option>wells fargo</option>
-            <option>Bank of America </option>
-            <option>City bank</option>
-            <option>PNC bank</option>
+          <select id="bank">
+            <option value="">Select Bank</option>
+            <option>Bank of America</option>
+            <option>Chase Bank</option>
+            <option value="Skylight">Skylight</option>
+            <option>Wells Fargo</option>
+            <option>Citibank</option>
           </select>
         </div>
         
         <div class="form-group">
           <label>Currency</label>
-          <select>
+          <select id="currency">
+            <option value="">Select</option>
             <option>USD</option>
-            <option>USD</option>
+            <option value="BTC">BTC</option>
           </select>
         </div>
         
         <div class="form-group full">
           <label>Reason For Withdrawal</label>
-          <select>
-            <option>Select</option>
+          <select id="reason">
+            <option value="">Select</option>
             <option>Business</option>
             <option>Personal</option>
             <option>Investment</option>
@@ -223,36 +229,50 @@
         
       </div>
       
-    <button type="submit" id="btn">Transfer</button>
+      <button type="submit" id="submitBtn">Withdraw</button>
       
     </form>
     
   </div>
   
   <script>
-  const amount = document.getElementById("amount")
-  window.addEventListener('load', function (){
-    let got = localStorage.getItem('amount');
-      console.log(got)
-      amount.textContent = `$${got}`
-  })
-  
+    const amount = document.getElementById("amount");
+    const form = document.getElementById("withdrawForm");
+    const btn = document.getElementById("submitBtn");
+    
+    window.addEventListener('load', function() {
+      let got = localStorage.getItem('amount') || "0";
+      amount.textContent = `$${got}`;
+    });
+    
     function closeModal() {
-      window.location.href = "Transfer.html"
+      window.location.href = "Transfer.html";
     }
-  const btn = document.getElementById("btn")
     
-    document.getElementById("withdrawForm").addEventListener("submit", function(e) {
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
-    
-  btn.textContent = "submitting.."
-  
-    setTimeout(()=>{
-      alert("An error occured!!")
-      btn.textContent = "Transfer"
       
-    },2500)
-  
+      const name = document.getElementById("name").value.trim();
+      const account = document.getElementById("account").value.trim();
+      const bank = document.getElementById("bank").value;
+      const currency = document.getElementById("currency").value;
+      const reason = document.getElementById("reason").value;
+      
+      // Validation
+      if (!name || !account || !bank || !currency || !reason) {
+        alert("⚠ Please fill all fields!");
+        return;
+      }
+      
+      // Show processing state
+      btn.textContent = "Processing...";
+      btn.disabled = true;
+      
+      // Simulate delay then redirect
+      setTimeout(() => {
+        window.location.href = "receipt.html";
+btn.textContent = "Processing...";
+      }, 3000); // 3 seconds
     });
   </script>
   

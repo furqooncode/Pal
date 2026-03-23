@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTP Screen</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .email {
+        color: #1e73e8;
+    }
+
+    .otp-box {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin: 25px 0;
+    }
+
+    .otp-box input {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 10px; /* slight radius (cube look) */
+        outline: none;
+        transition: 0.2s;
+    }
+
+    .otp-box input:focus {
+        border-color: #1e73e8;
+        box-shadow: 0 0 5px rgba(30,115,232,0.3);
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        background: #1e73e8;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .resend {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .resend a {
+        color: #1e73e8;
+        text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+        .otp-box input {
+            width: 50px;
+            height: 50px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Enter otp</h2>
+    <p>
+        A magic code was sent to<br>
+        <span class="email">
+            rich65@gmail.com</span>
+    </p>
+
+    <div class="otp-box">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+    </div>
+
+    <button class="btn" id="btn">Continue</button>
+
+    <div class="resend">
+        Didn’t get OTP? <a href="#">Resend OTP</a>
+    </div>
+</div>
+
+<script>
+    const inputs = document.querySelectorAll(".otp-box input");
+    const btn = document.getElementById("btn");
+
+    // Auto move
+    inputs.forEach((input, i) => {
+        input.addEventListener("input", () => {
+            if (input.value && i < inputs.length - 1) {
+                inputs[i + 1].focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !input.value && i > 0) {
+                inputs[i - 1].focus();
+            }
+        });
+    });
+
+    // Button logic
+    btn.onclick = () => {
+        let code = "";
+        inputs.forEach(i => code += i.value);
+
+        if (code === "6478") {
+            btn.innerText = "Checking...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 1500);
+        } else {
+            alert("Wrong OTP");
+        }
+    };
+</script>
+
+</body>
+</html>
