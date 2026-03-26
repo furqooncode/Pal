@@ -175,10 +175,10 @@
     
     <div class="amount">
       <h1 id="amount"></h1>
-      <small>You have: $41,379</small>
+      <small>You have: €41,379</small>
       
       <div class="rate">
-        ⚠ Current withdrawal rate: $1 = 0.00001438 BTC
+        ⚠ Current withdrawal rate: €1 = 0.00001438 BTC
       </div>
     </div>
     
@@ -242,7 +242,7 @@
     
     window.addEventListener('load', function() {
       let got = localStorage.getItem('amount') || "0";
-      amount.textContent = `$${got}`;
+      amount.textContent = `€${got}`;
     });
     
     function closeModal() {
